@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartBuild - Project Planning</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #1f2937;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #1f2937;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .header p {
+            margin-top: 8px;
+            font-size: 16px;
+        }
+
+        /* MAIN CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* PAGE INTRO */
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* CARD */
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        /* FORM */
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 22px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        /* RESULT */
+
+        .result-title {
+            color: #2563eb;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            border-left: 5px solid #2563eb;
+            border-radius: 6px;
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .no-data {
+            color: #6b7280;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* BACK BUTTON */
+
+        .back-area {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #374151;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background: #111827;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+            margin-top: 30px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .container {
+                width: 94%;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+            .intro h2 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h1>🏗️ SMARTBUILD</h1>
+
+    <p>
+        Integrated Building Lifecycle System
+    </p>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+
+    <!-- INTRO -->
+
+    <div class="intro">
+
+        <h2>
+            🏗️ Project Planning
+        </h2>
+
+        <p>
+            Enter your project location to view planning
+            information, estimated cost, soil information
+            and required permissions.
+        </p>
+
+    </div>
+
+
+    <!-- LOCATION SEARCH -->
+
+    <div class="card">
+
+        <h3>
+            📍 Enter Project Location
+        </h3>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label for="location">
+                Project Location
+            </label>
+
+            <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Enter location e.g. Gulbarga"
+                value="{{ location|default:'' }}"
+                required
+            >
+
+            <button
+                type="submit"
+                class="button"
+            >
+                🔍 View Planning Information
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- PLANNING RESULT -->
+
+    {% if planning_data %}
+
+    <div class="card">
+
+        <h3 class="result-title">
+            📋 Planning Information
+        </h3>
+
+
+        <div class="info-item">
+
+            <strong>
+                📍 Location
+            </strong>
+
+            {{ planning_data.location }}
+
+        </div>
+
+
+        <div class="info-item">
+
+            <strong>
+                💰 Estimated Cost
+            </strong>
+
+            {{ planning_data.estimated_cost }}
+
+        </div>
+
+
+        <div class="info-item">
+
+            <strong>
+                🌱 Soil Information
+            </strong>
+
+            {{ planning_data.soil_information }}
+
+        </div>
+
+
+        <div class="info-item">
+
+            <strong>
+                📋 Required Permissions
+            </strong>
+
+            {{ planning_data.required_permissions }}
+
+        </div>
+
+    </div>
+
+    {% elif location %}
+
+    <div class="card">
+
+        <p class="no-data">
+            ❌ No planning information found for
+            <strong>{{ location }}</strong>.
+        </p>
+
+        <p class="no-data">
+            Please check the location name and try again.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- BACK -->
+
+    <div class="back-area">
+
+        <a
+            href="/dashboard/"
+            class="back-button"
+        >
+            ← Back to Dashboard
+        </a>
+
+        <a
+            href="/monitoring/"
+            class="back-button"
+            style="margin-left: 10px;"
+        >
+            📊 Construction Monitoring →
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    SmartBuild © 2026 |
+    Integrated Building Lifecycle System
+
+</div>
+
+
+</body>
+
+</html>

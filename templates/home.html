@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartBuild | Building Lifecycle Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #1f2937;
+        }
+
+        /* Navigation Bar */
+
+        nav {
+            background-color: #17324d;
+            padding: 18px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #f59e0b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #f59e0b;
+        }
+
+        .login-btn {
+            background-color: #f59e0b;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+        /* Hero Section */
+
+        .hero {
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 8%;
+            background-color: white;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            color: #17324d;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 30px;
+            color: #374151;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .get-started {
+            display: inline-block;
+            background-color: #f59e0b;
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        .get-started:hover {
+            background-color: #d97706;
+        }
+
+        .hero-image {
+            width: 420px;
+            height: 300px;
+            background-color: #e5e7eb;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 20px;
+        }
+
+        /* About Section */
+
+        .section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #17324d;
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            line-height: 1.8;
+            color: #6b7280;
+            font-size: 17px;
+        }
+
+        /* Features */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 35px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #17324d;
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* Workflow */
+
+        .workflow {
+            background-color: #17324d;
+            color: white;
+            text-align: center;
+        }
+
+        .workflow .section-title {
+            color: white;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            background-color: white;
+            color: #17324d;
+            padding: 18px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .arrow {
+            color: #f59e0b;
+            font-size: 25px;
+        }
+
+        /* Footer */
+
+        footer {
+            background-color: #0f2235;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            margin: 7px;
+            color: #d1d5db;
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            nav {
+                padding: 18px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <nav>
+
+        <div class="logo">
+            Smart<span>Build</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#features">Features</a>
+            </li>
+
+            <li>
+                <a href="#workflow">Workflow</a>
+            </li>
+
+            <li>
+                <a href="/login/" class="login-btn">Login</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>SmartBuild</h1>
+
+            <h2>
+                Integrated Building Lifecycle System
+                with AI Crack Detection
+            </h2>
+
+            <p>
+                SmartBuild provides an integrated platform
+                for managing building lifecycle activities
+                through Planning, Monitoring and Maintenance.
+            </p>
+
+            <a href="/login/" class="get-started">
+                Get Started
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            Construction Image
+
+        </div>
+
+    </section>
+
+
+    <!-- About Section -->
+
+    <section class="section" id="about">
+
+        <h2 class="section-title">
+            About SmartBuild
+        </h2>
+
+        <p class="section-description">
+
+            SmartBuild is an integrated building lifecycle
+            management system designed to bring different
+            stages of building management together in one
+            platform. The system focuses on Planning,
+            Monitoring and Maintenance, including
+            AI-based crack detection.
+
+        </p>
+
+    </section>
+
+
+    <!-- Features Section -->
+
+    <section class="section" id="features">
+
+        <h2 class="section-title">
+            SmartBuild Modules
+        </h2>
+
+        <div class="features">
+
+
+            <!-- Planning -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🏗️
+                </div>
+
+                <h3>
+                    Planning
+                </h3>
+
+                <p>
+                    Provides planning-related information
+                    to support the building lifecycle.
+                </p>
+
+            </div>
+
+
+            <!-- Monitoring -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Monitoring
+                </h3>
+
+                <p>
+                    Helps monitor construction activities,
+                    progress and project milestones.
+                </p>
+
+            </div>
+
+
+            <!-- Maintenance -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Maintenance
+                </h3>
+
+                <p>
+                    Uses AI-based crack detection to
+                    identify cracks from building images.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Workflow Section -->
+
+    <section class="section workflow" id="workflow">
+
+        <h2 class="section-title">
+            SmartBuild Workflow
+        </h2>
+
+        <div class="steps">
+
+            <div class="step">
+                User
+            </div>
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="step">
+                Planning
+            </div>
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="step">
+                Monitoring
+            </div>
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="step">
+                Maintenance
+            </div>
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="step">
+                AI Crack Detection
+            </div>
+
+            <div class="arrow">
+                →
+            </div>
+
+            <div class="step">
+                Results
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <h3>
+            SmartBuild
+        </h3>
+
+        <p>
+            Integrated Building Lifecycle System
+        </p>
+
+        <p>
+            Department of Information Science & Engineering
+        </p>
+
+        <p>
+            PDA College of Engineering
+        </p>
+
+        <p>
+            © 2026 SmartBuild
+        </p>
+
+    </footer>
+
+</body>
+</html>

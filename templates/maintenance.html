@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartBuild - AI Maintenance</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #1f2937;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #1f2937;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .header p {
+            margin-top: 8px;
+            font-size: 16px;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* INTRO */
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* CARD */
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* UPLOAD */
+
+        .upload-box {
+            border: 2px dashed #cbd5e1;
+            padding: 35px;
+            text-align: center;
+            border-radius: 10px;
+            background: #f8fafc;
+        }
+
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            margin: 20px 0;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            background: white;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 22px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        /* IMAGE */
+
+        .image-container {
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            margin-top: 10px;
+        }
+
+        /* RESULT */
+
+        .result-box {
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+            background: #f8fafc;
+            margin-bottom: 25px;
+        }
+
+        .result {
+            font-size: 25px;
+            font-weight: bold;
+            margin: 10px 0 20px;
+        }
+
+        /* RESULT GRID */
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .result-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .result-item .icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .result-item h4 {
+            margin: 5px 0;
+            color: #6b7280;
+        }
+
+        .result-item p {
+            margin: 0;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        /* RECOMMENDATION */
+
+        .recommendation {
+            margin-top: 20px;
+            padding: 20px;
+            background: #eff6ff;
+            border-left: 5px solid #2563eb;
+            border-radius: 7px;
+        }
+
+        .recommendation strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* EMPTY STATE */
+
+        .empty {
+            text-align: center;
+            color: #6b7280;
+            padding: 20px;
+        }
+
+        /* NAVIGATION */
+
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #374151;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .back-button:hover {
+            background: #111827;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+            margin-top: 30px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h1>🏗️ SMARTBUILD</h1>
+
+    <p>
+        Integrated Building Lifecycle System
+    </p>
+
+</div>
+
+
+<div class="container">
+
+
+    <!-- INTRO -->
+
+    <div class="intro">
+
+        <h2>
+            🤖 AI Maintenance & Crack Detection
+        </h2>
+
+        <p>
+            Upload a building image to check for
+            possible structural cracks using AI.
+        </p>
+
+    </div>
+
+
+    <!-- UPLOAD -->
+
+    <div class="card">
+
+        <h3>
+            📤 Upload Building Image
+        </h3>
+
+        <div class="upload-box">
+
+            <p>
+                Select a clear image of the building
+                or wall for AI analysis.
+            </p>
+
+            <form
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                {% csrf_token %}
+
+                <input
+                    type="file"
+                    name="building_image"
+                    accept="image/*"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="button"
+                >
+                    🔍 Analyze Image
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    {% if image_url %}
+
+    <!-- UPLOADED IMAGE -->
+
+    <div class="card">
+
+        <h3>
+            🖼️ Analyzed Building Image
+        </h3>
+
+        <div class="image-container">
+
+            <img
+                src="{{ image_url }}"
+                alt="Analyzed Building Image"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- AI RESULT -->
+
+    <div class="card">
+
+        <h3>
+            🔎 Crack Detection Result
+        </h3>
+
+
+        <div class="result-box">
+
+            <div class="result">
+                {{ result }}
+            </div>
+
+            <p>
+                AI analysis completed successfully.
+            </p>
+
+        </div>
+
+
+        <!-- RESULT DETAILS -->
+
+        <div class="result-grid">
+
+
+            <div class="result-item">
+
+                <div class="icon">
+                    📊
+                </div>
+
+                <h4>
+                    Confidence
+                </h4>
+
+                <p>
+                    {{ confidence }}%
+                </p>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <div class="icon">
+                    🔢
+                </div>
+
+                <h4>
+                    Cracks Detected
+                </h4>
+
+                <p>
+                    {{ crack_count }}
+                </p>
+
+            </div>
+
+
+            <div class="result-item">
+
+                <div class="icon">
+                    ⚠️
+                </div>
+
+                <h4>
+                    Severity
+                </h4>
+
+                <p>
+                    {{ severity }}
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- RECOMMENDATION -->
+
+        <div class="recommendation">
+
+            <strong>
+                💡 Recommendation
+            </strong>
+
+            {{ recommendation }}
+
+        </div>
+
+
+    </div>
+
+
+    {% endif %}
+
+
+    <!-- NAVIGATION -->
+
+    <div class="navigation">
+
+        <a
+            href="/dashboard/"
+            class="back-button"
+        >
+            ← Back to Dashboard
+        </a>
+
+
+        <a
+            href="/history/"
+            class="back-button"
+        >
+            📋 Detection History
+        </a>
+
+
+        <a
+            href="/report/"
+            class="back-button"
+        >
+            📋 Project Report
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    SmartBuild © 2026 |
+    Integrated Building Lifecycle System
+
+</div>
+
+
+</body>
+
+</html>

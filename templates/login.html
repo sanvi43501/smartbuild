@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | SmartBuild</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background-color: #f5f7fa;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 400px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #17324d;
+            margin-bottom: 10px;
+        }
+
+        .logo span {
+            color: #f59e0b;
+        }
+
+        .title {
+            text-align: center;
+            color: #374151;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px;
+
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+
+            font-size: 15px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #f59e0b;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 13px;
+
+            background-color: #f59e0b;
+            color: white;
+
+            border: none;
+            border-radius: 6px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #d97706;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back-home a {
+            color: #17324d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-home a:hover {
+            color: #f59e0b;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="login-container">
+
+        <div class="logo">
+            Smart<span>Build</span>
+        </div>
+
+        <h1 class="title">
+            Welcome Back!
+        </h1>
+
+        <p class="subtitle">
+            Login to your SmartBuild account
+        </p>
+
+
+        <form>
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-button">
+                Login
+            </button>
+
+        </form>
+
+
+        <div class="back-home">
+
+            <a href="/">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

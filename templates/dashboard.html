@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartBuild Dashboard</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #1e3a8a;
+            color: white;
+            padding: 25px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* MAIN CONTAINER */
+
+        .container {
+            max-width: 1150px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .welcome h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #6b7280;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* BUTTONS */
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 7px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        .secondary-button {
+            display: inline-block;
+            text-decoration: none;
+            background: #eef2ff;
+            color: #1e40af;
+            padding: 10px 15px;
+            border-radius: 7px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .secondary-button:hover {
+            background: #dbeafe;
+        }
+
+        /* PROJECT STATUS */
+
+        .status-card {
+            background: white;
+            margin-top: 30px;
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .status-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .status-item {
+            background: #f8fafc;
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 5px solid #2563eb;
+        }
+
+        .status-item strong {
+            display: block;
+            margin-top: 7px;
+            color: #16a34a;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h1>🏗️ SMARTBUILD</h1>
+
+    <p>
+        Integrated Building Lifecycle System
+    </p>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+
+    <!-- WELCOME -->
+
+    <div class="welcome">
+
+        <h2>
+            Welcome to SmartBuild Dashboard
+        </h2>
+
+        <p>
+            Manage your building project from planning
+            to construction and maintenance.
+        </p>
+
+    </div>
+
+
+    <!-- MODULE CARDS -->
+
+    <div class="cards">
+
+
+        <!-- PLANNING -->
+
+        <div class="card">
+
+            <div class="icon">
+                🏗️
+            </div>
+
+            <h3>
+                Project Planning
+            </h3>
+
+            <p>
+                Enter your project location and view
+                planning information, estimated cost,
+                soil information and required permissions.
+            </p>
+
+            <a href="/planning/" class="button">
+                Open Planning →
+            </a>
+
+        </div>
+
+
+        <!-- MONITORING -->
+
+        <div class="card">
+
+            <div class="icon">
+                📊
+            </div>
+
+            <h3>
+                Construction Monitoring
+            </h3>
+
+            <p>
+                Monitor construction progress,
+                project stages and important
+                project milestones.
+            </p>
+
+            <a href="/monitoring/" class="button">
+                View Progress →
+            </a>
+
+        </div>
+
+
+        <!-- AI MAINTENANCE -->
+
+        <div class="card">
+
+            <div class="icon">
+                🤖
+            </div>
+
+            <h3>
+                AI Maintenance
+            </h3>
+
+            <p>
+                Upload building images and use
+                AI-powered crack detection to identify
+                possible structural cracks.
+            </p>
+
+            <a href="/maintenance/" class="button">
+                Analyze Building →
+            </a>
+
+            <br>
+
+            <a href="/history/" class="secondary-button">
+                📋 Detection History
+            </a>
+
+            <br>
+
+            <a href="/report/" class="secondary-button">
+                📋 Project Report
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- PROJECT STATUS -->
+
+    <div class="status-card">
+
+        <h2>
+            📋 Project Status
+        </h2>
+
+
+        <div class="status-grid">
+
+
+            <div class="status-item">
+
+                🏗️ Planning
+
+                <strong>
+                    ✓ Completed
+                </strong>
+
+            </div>
+
+
+            <div class="status-item">
+
+                📊 Construction Monitoring
+
+                <strong>
+                    ✓ Active
+                </strong>
+
+            </div>
+
+
+            <div class="status-item">
+
+                🤖 AI Crack Detection
+
+                <strong>
+                    ✓ Active
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    SmartBuild © 2026 |
+    Integrated Building Lifecycle System
+
+</div>
+
+
+</body>
+
+</html>

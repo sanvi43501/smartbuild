@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartBuild - Construction Monitoring</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #1f2937;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #1f2937;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .header p {
+            margin-top: 8px;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        /* INTRO */
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .intro p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* CARD */
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* FORM */
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            font-size: 16px;
+            margin-bottom: 18px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .button {
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        /* PROJECT INFO */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .info-box .icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .info-box h4 {
+            margin: 5px 0;
+            color: #6b7280;
+        }
+
+        .info-box p {
+            margin: 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* PROGRESS BAR */
+
+        .progress-container {
+            margin-top: 25px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 28px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: {{ progress }}%;
+            background: #2563eb;
+            border-radius: 20px;
+            transition: width 0.5s ease;
+        }
+
+        /* MILESTONES */
+
+        .milestone {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 5px solid #d1d5db;
+        }
+
+        .milestone.completed {
+            border-left-color: #16a34a;
+        }
+
+        .milestone.in-progress {
+            border-left-color: #f59e0b;
+        }
+
+        .milestone.pending {
+            border-left-color: #9ca3af;
+        }
+
+        .milestone-icon {
+            font-size: 22px;
+            margin-right: 12px;
+        }
+
+        .milestone-name {
+            font-weight: bold;
+        }
+
+        /* LIFECYCLE */
+
+        .lifecycle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .lifecycle-step {
+            flex: 1;
+            text-align: center;
+            padding: 18px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .lifecycle-step .icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .arrow {
+            font-size: 25px;
+            font-weight: bold;
+            color: #6b7280;
+        }
+
+        /* BUTTONS */
+
+        .navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #374151;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .back-button:hover {
+            background: #111827;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+            margin-top: 30px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lifecycle {
+                flex-direction: column;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h1>🏗️ SMARTBUILD</h1>
+
+    <p>
+        Integrated Building Lifecycle System
+    </p>
+
+</div>
+
+
+<div class="container">
+
+
+    <!-- INTRO -->
+
+    <div class="intro">
+
+        <h2>
+            📊 Construction Monitoring
+        </h2>
+
+        <p>
+            Monitor the progress of your building construction
+            project through different stages.
+        </p>
+
+    </div>
+
+
+    <!-- UPDATE PROGRESS -->
+
+    <div class="card">
+
+        <h3>
+            ✏️ Update Project Progress
+        </h3>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label>
+                Project Stage
+            </label>
+
+            <input
+                type="text"
+                name="project_stage"
+                value="{{ project_stage }}"
+                required
+            >
+
+
+            <label>
+                Current Status
+            </label>
+
+            <input
+                type="text"
+                name="current_status"
+                value="{{ current_status }}"
+                required
+            >
+
+
+            <label>
+                Progress (%)
+            </label>
+
+            <input
+                type="number"
+                name="progress"
+                value="{{ progress }}"
+                min="0"
+                max="100"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="button"
+            >
+                💾 Update Progress
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- PROJECT PROGRESS -->
+
+    <div class="card">
+
+        <h3>
+            🏗️ Project Progress
+        </h3>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-box">
+
+                <div class="icon">
+                    🏗️
+                </div>
+
+                <h4>
+                    Project Stage
+                </h4>
+
+                <p>
+                    {{ project_stage }}
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="icon">
+                    📌
+                </div>
+
+                <h4>
+                    Current Status
+                </h4>
+
+                <p>
+                    {{ current_status }}
+                </p>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="icon">
+                    📈
+                </div>
+
+                <h4>
+                    Progress
+                </h4>
+
+                <p>
+                    {{ progress }}%
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- PROGRESS BAR -->
+
+        <div class="progress-container">
+
+            <div class="progress-label">
+
+                <span>
+                    Construction Progress
+                </span>
+
+                <span>
+                    {{ progress }}%
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MILESTONES -->
+
+    <div class="card">
+
+        <h3>
+            📋 Project Milestones
+        </h3>
+
+
+        {% for milestone in milestones %}
+
+            {% if milestone.status == "completed" %}
+
+                <div class="milestone completed">
+
+                    <div class="milestone-icon">
+                        ✅
+                    </div>
+
+                    <div class="milestone-name">
+                        {{ milestone.name }} completed
+                    </div>
+
+                </div>
+
+
+            {% elif milestone.status == "in_progress" %}
+
+                <div class="milestone in-progress">
+
+                    <div class="milestone-icon">
+                        🔄
+                    </div>
+
+                    <div class="milestone-name">
+                        {{ milestone.name }} in progress
+                    </div>
+
+                </div>
+
+
+            {% else %}
+
+                <div class="milestone pending">
+
+                    <div class="milestone-icon">
+                        ⏳
+                    </div>
+
+                    <div class="milestone-name">
+                        {{ milestone.name }}
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+
+    <!-- BUILDING LIFECYCLE -->
+
+    <div class="card">
+
+        <h3>
+            🔄 Building Lifecycle
+        </h3>
+
+
+        <div class="lifecycle">
+
+
+            <div class="lifecycle-step">
+
+                <div class="icon">
+                    🏗️
+                </div>
+
+                <strong>
+                    Planning
+                </strong>
+
+                <p>
+                    Project planning
+                </p>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="lifecycle-step">
+
+                <div class="icon">
+                    📊
+                </div>
+
+                <strong>
+                    Monitoring
+                </strong>
+
+                <p>
+                    Construction progress
+                </p>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="lifecycle-step">
+
+                <div class="icon">
+                    🤖
+                </div>
+
+                <strong>
+                    Maintenance
+                </strong>
+
+                <p>
+                    AI crack detection
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="navigation">
+
+        <a
+            href="/dashboard/"
+            class="back-button"
+        >
+            ← Back to Dashboard
+        </a>
+
+
+        <a
+            href="/maintenance/"
+            class="back-button"
+        >
+            🤖 AI Maintenance →
+        </a>
+
+
+        <a
+            href="/report/"
+            class="back-button"
+        >
+            📋 View Project Report
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    SmartBuild © 2026 |
+    Integrated Building Lifecycle System
+
+</div>
+
+
+</body>
+
+</html>
