@@ -144,7 +144,8 @@
         </p>
 
 
-        <form>
+       <form method="POST">
+    {% csrf_token %}
 
             <div class="form-group">
 
@@ -185,6 +186,18 @@
                 class="login-button">
                 Login
             </button>
+            <p style="text-align:center; margin-top:20px; color:#666;">
+
+    Don't have an account?
+
+    <a href="{% url 'register' %}"
+       style="color:#2563eb; font-weight:bold; text-decoration:none;">
+
+        Register
+
+    </a>
+
+</p>
 
         </form>
 

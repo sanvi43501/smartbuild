@@ -1,6 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +11,7 @@
     <title>SmartBuild | Building Lifecycle Management</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -20,11 +24,13 @@
             color: #1f2937;
         }
 
-        /* Navigation Bar */
+
+        /* ================= NAVIGATION BAR ================= */
 
         nav {
             background-color: #17324d;
             padding: 18px 60px;
+
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -44,6 +50,7 @@
             display: flex;
             gap: 30px;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -62,19 +69,25 @@
             border-radius: 6px;
         }
 
-        /* Hero Section */
+
+        /* ================= HERO SECTION ================= */
 
         .hero {
-            min-height: 520px;
+            min-height: 500px;
+
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+
             padding: 70px 8%;
+
             background-color: white;
+
+            text-align: center;
         }
 
         .hero-content {
-            max-width: 600px;
+            max-width: 850px;
         }
 
         .hero-content h1 {
@@ -98,11 +111,16 @@
 
         .get-started {
             display: inline-block;
+
             background-color: #f59e0b;
             color: white;
+
             text-decoration: none;
+
             padding: 14px 28px;
+
             border-radius: 7px;
+
             font-weight: bold;
         }
 
@@ -110,19 +128,8 @@
             background-color: #d97706;
         }
 
-        .hero-image {
-            width: 420px;
-            height: 300px;
-            background-color: #e5e7eb;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6b7280;
-            font-size: 20px;
-        }
 
-        /* About Section */
+        /* ================= ABOUT SECTION ================= */
 
         .section {
             padding: 70px 8%;
@@ -130,58 +137,81 @@
 
         .section-title {
             text-align: center;
+
             color: #17324d;
+
             font-size: 34px;
+
             margin-bottom: 20px;
         }
 
         .section-description {
             max-width: 800px;
+
             margin: auto;
+
             text-align: center;
+
             line-height: 1.8;
+
             color: #6b7280;
+
             font-size: 17px;
         }
 
-        /* Features */
+
+        /* ================= FEATURES ================= */
 
         .features {
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 25px;
+
             margin-top: 40px;
         }
 
         .feature-card {
             background-color: white;
+
             padding: 35px;
+
             border-radius: 12px;
+
             text-align: center;
+
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .feature-icon {
             font-size: 45px;
+
             margin-bottom: 20px;
         }
 
         .feature-card h3 {
             color: #17324d;
+
             font-size: 23px;
+
             margin-bottom: 15px;
         }
 
         .feature-card p {
             color: #6b7280;
+
             line-height: 1.7;
         }
 
-        /* Workflow */
+
+        /* ================= WORKFLOW ================= */
 
         .workflow {
             background-color: #17324d;
+
             color: white;
+
             text-align: center;
         }
 
@@ -191,48 +221,62 @@
 
         .steps {
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             gap: 15px;
+
             margin-top: 40px;
+
             flex-wrap: wrap;
         }
 
         .step {
             background-color: white;
+
             color: #17324d;
+
             padding: 18px 25px;
+
             border-radius: 8px;
+
             font-weight: bold;
         }
 
         .arrow {
             color: #f59e0b;
+
             font-size: 25px;
         }
 
-        /* Footer */
+
+        /* ================= FOOTER ================= */
 
         footer {
             background-color: #0f2235;
+
             color: white;
+
             text-align: center;
+
             padding: 30px;
         }
 
         footer p {
             margin: 7px;
+
             color: #d1d5db;
         }
 
-        /* Responsive Design */
+
+        /* ================= RESPONSIVE DESIGN ================= */
 
         @media (max-width: 900px) {
 
             .hero {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
+                padding: 60px 5%;
             }
 
             .features {
@@ -246,13 +290,18 @@
             nav {
                 padding: 18px 25px;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- Navigation Bar -->
+
+    <!-- ================= NAVIGATION BAR ================= -->
 
     <nav>
 
@@ -279,7 +328,9 @@
             </li>
 
             <li>
-                <a href="/login/" class="login-btn">Login</a>
+                <a href="/register/" class="login-btn">
+                    Get Started
+                </a>
             </li>
 
         </ul>
@@ -287,13 +338,16 @@
     </nav>
 
 
-    <!-- Hero Section -->
+
+    <!-- ================= HERO SECTION ================= -->
 
     <section class="hero">
 
         <div class="hero-content">
 
-            <h1>SmartBuild</h1>
+            <h1>
+                SmartBuild
+            </h1>
 
             <h2>
                 Integrated Building Lifecycle System
@@ -306,23 +360,17 @@
                 through Planning, Monitoring and Maintenance.
             </p>
 
-            <a href="/login/" class="get-started">
+            <a href="/register/" class="get-started">
                 Get Started
             </a>
-
-        </div>
-
-
-        <div class="hero-image">
-
-            Construction Image
 
         </div>
 
     </section>
 
 
-    <!-- About Section -->
+
+    <!-- ================= ABOUT SECTION ================= -->
 
     <section class="section" id="about">
 
@@ -344,7 +392,8 @@
     </section>
 
 
-    <!-- Features Section -->
+
+    <!-- ================= FEATURES SECTION ================= -->
 
     <section class="section" id="features">
 
@@ -375,6 +424,7 @@
             </div>
 
 
+
             <!-- Monitoring -->
 
             <div class="feature-card">
@@ -393,6 +443,7 @@
                 </p>
 
             </div>
+
 
 
             <!-- Maintenance -->
@@ -419,7 +470,8 @@
     </section>
 
 
-    <!-- Workflow Section -->
+
+    <!-- ================= WORKFLOW SECTION ================= -->
 
     <section class="section workflow" id="workflow">
 
@@ -478,7 +530,8 @@
     </section>
 
 
-    <!-- Footer -->
+
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
@@ -504,5 +557,7 @@
 
     </footer>
 
+
 </body>
+
 </html>

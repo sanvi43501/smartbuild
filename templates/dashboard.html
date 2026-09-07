@@ -197,7 +197,24 @@
             }
 
         }
+        .logout {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+}
 
+.logout a {
+    text-decoration: none;
+    background: #dc3545;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.logout a:hover {
+    background: #2a2cb0;
+}
     </style>
 
 </head>
@@ -205,7 +222,9 @@
 
 <body>
 
-
+<div class="logout">
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
 <!-- HEADER -->
 
 <div class="header">
@@ -268,7 +287,7 @@
             </a>
 
         </div>
-
+        
 
         <!-- MONITORING -->
 
