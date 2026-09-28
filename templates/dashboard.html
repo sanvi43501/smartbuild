@@ -282,9 +282,7 @@
                 soil information and required permissions.
             </p>
 
-            <a href="/planning/" class="button">
-                Open Planning →
-            </a>
+            <a href="{% url 'planning' %}">Open Planning →</a>
 
         </div>
         
@@ -307,9 +305,7 @@
                 project milestones.
             </p>
 
-            <a href="/monitoring/" class="button">
-                View Progress →
-            </a>
+            <a href="{% url 'monitoring' %}">View Progress →</a>
 
         </div>
 
@@ -332,21 +328,16 @@
                 possible structural cracks.
             </p>
 
-            <a href="/maintenance/" class="button">
-                Analyze Building →
-            </a>
+            
+<a href="{% url 'maintenance' %}">Analyze Building →</a>
 
             <br>
 
-            <a href="/history/" class="secondary-button">
-                📋 Detection History
-            </a>
+           <a href="{% url 'history' %}">📋 Detection History</a>
 
             <br>
 
-            <a href="/report/" class="secondary-button">
-                📋 Project Report
-            </a>
+           <a href="{% url 'report' %}">📋 Project Report</a> 
 
         </div>
 

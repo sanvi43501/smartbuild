@@ -45,27 +45,54 @@ def dashboard(request):
     return render(request, "dashboard.html")
 
 def planning(request):
-
     planning_data = None
     location = None
 
+    planning_info = {
+        "gulbarga": {
+            "cost": "₹25–40 Lakhs",
+            "soil": "Black cotton soil — preliminary information",
+            "permissions": "Local building plan approval and applicable authority permissions",
+        },
+        "kalaburagi": {
+            "cost": "₹25–40 Lakhs",
+            "soil": "Black cotton soil — preliminary information",
+            "permissions": "Local building plan approval and applicable authority permissions",
+        },
+        "bengaluru": {
+            "cost": "₹35–60 Lakhs",
+            "soil": "Red and lateritic soil — preliminary information",
+            "permissions": "BBMP/local building plan approval and applicable authority permissions",
+        },
+        "mysuru": {
+            "cost": "₹25–45 Lakhs",
+            "soil": "Red loamy soil — preliminary information",
+            "permissions": "Local building plan approval and applicable authority permissions",
+        },
+        "hyderabad": {
+            "cost": "₹30–50 Lakhs",
+            "soil": "Red and black soil — preliminary information",
+            "permissions": "GHMC/local building plan approval and applicable authority permissions",
+        },
+    }
+
     if request.method == "POST":
+        location = request.POST.get("location", "").strip().lower()
 
-        location = request.POST.get("location")
+        if location in planning_info:
+            info = planning_info[location]
 
-        planning_data = PlanningData.objects.filter(
-            location__iexact=location
-        ).first()
+            planning_data = {
+                "location": location.title(),
+                "estimated_cost": info["cost"],
+                "soil_information": info["soil"],
+                "required_permissions": info["permissions"],
+            }
 
-    return render(
-        request,
-        "planning.html",
-        {
-            "location": location,
-            "planning_data": planning_data,
-        }
-    )
-
+    return render(request, "planning.html", {
+        "location": location,
+        "planning_data": planning_data,
+    })
 
 def monitoring(request):
 
